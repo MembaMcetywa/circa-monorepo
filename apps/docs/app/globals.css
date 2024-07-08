@@ -19,6 +19,9 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 * {
