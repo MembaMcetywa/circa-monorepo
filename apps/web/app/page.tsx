@@ -7,7 +7,7 @@ export default function Home() {
         CIRCA
         <ol>
           <li>
-            A <span style={{color: '#AA0A27'}}>social</span> experiment
+            A <span style={{ color: "#AA0A27" }}>social</span> experiment
           </li>
         </ol>
       </main>
