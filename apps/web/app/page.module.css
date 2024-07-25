@@ -32,7 +32,7 @@
   flex-direction: column;
   gap: 32px;
   grid-row-start: 2;
-  font-family:'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: 2rem;
 }
 
@@ -44,7 +44,6 @@
   line-height: 24px;
   letter-spacing: -0.01em;
   list-style: none;
-
 }
 
 .main li:not(:last-of-type) {
@@ -72,7 +71,10 @@
   border: none;
   font-family: var(--font-geist-sans);
   border: 1px solid transparent;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s;
   cursor: pointer;
   display: flex;
   align-items: center;
