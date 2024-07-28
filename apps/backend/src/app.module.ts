@@ -8,6 +8,9 @@ import * as dotenv from 'dotenv';
 import { PlacesController } from './places/places.controller';
 import { PlacesService } from './places/places.service';
 import { ConfigModule } from '@nestjs/config';
+import { DirectionsController } from './directions/directions.controller';
+import { DirectionsService } from './directions/directions.service';
+import { DistanceMatrixService } from './directions/distance-matrix.service';
 
 dotenv.config();
 
@@ -16,10 +19,15 @@ dotenv.config();
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    PlacesModule,
+    
     MongooseModule.forRoot(process.env.MONGO_URI),
   ],
-  controllers: [AppController, PlacesController],
-  providers: [AppService, PlacesService],
+  controllers: [AppController, PlacesController, DirectionsController],
+  providers: [
+    AppService,
+    PlacesService,
+    DirectionsService,
+    DistanceMatrixService,
+  ],
 })
 export class AppModule {}
