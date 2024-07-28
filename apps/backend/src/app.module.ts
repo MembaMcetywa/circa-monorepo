@@ -19,7 +19,6 @@ dotenv.config();
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    
     MongooseModule.forRoot(process.env.MONGO_URI),
   ],
   controllers: [AppController, PlacesController, DirectionsController],
