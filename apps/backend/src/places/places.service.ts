@@ -11,7 +11,7 @@ export class PlacesService {
     this.client = new Client({});
   }
 
-  async findPlaces(location: LatLng, radius: number): Promise<any> {
+  async findPlacesNearby(location: LatLng, radius: number): Promise<any> {
     const apiKey = process.env.GOOGLE_MAPS_API_KEY;
     return this.client
       .placesNearby({
