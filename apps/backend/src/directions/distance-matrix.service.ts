@@ -3,21 +3,25 @@ import { Client, LatLng } from '@googlemaps/google-maps-services-js';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
+
 @Injectable()
-export class PlacesService {
+export class DistanceMatrixService {
   private client: Client;
 
   constructor() {
     this.client = new Client({});
   }
 
-  async findPlacesNearby(location: LatLng, radius: number): Promise<any> {
+  async getDistanceMatrix(
+    origins: LatLng[],
+    destinations: LatLng[],
+  ): Promise<any> {
     const apiKey = process.env.GOOGLE_MAPS_API_KEY;
     return this.client
-      .placesNearby({
+      .distancematrix({
         params: {
-          location: location,
-          radius, //in meters
+          origins: origins,
+          destinations: destinations,
           key: apiKey,
         },
         timeout: 10000,
@@ -25,7 +29,8 @@ export class PlacesService {
       .then((response) => response.data)
       .catch((error) => {
         throw new Error(
-          'Failed to retrieve places: ' + error.response.data.error_message,
+          'Failed to retrieve distance matrix: ' +
+            error.response.data.error_message,
         );
       });
   }

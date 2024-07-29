@@ -10,6 +10,6 @@ export class PlacesController {
     @Query('location') location: string,
     @Query('radius') radius: number,
   ) {
-    return this.placesService.findPlaces(location, radius);
+    return this.placesService.findPlacesNearby(location, radius);
   }
 }
