@@ -1,5 +1,5 @@
 ## CIRCA
 
 ```
-A social experiment
+A directory of interesting places around you
 ```
