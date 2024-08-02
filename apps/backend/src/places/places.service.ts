@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Client, LatLng } from '@googlemaps/google-maps-services-js';
 import * as dotenv from 'dotenv';
-import { response } from 'express';
+
 
 dotenv.config();
 @Injectable()
@@ -15,9 +15,9 @@ export class PlacesService {
 
   async findPlacesNearby(location: LatLng, radius: number): Promise<any> {
     const apiKey = process.env.GOOGLE_MAPS_API_KEY;
-        this.logger.debug(
-          `Fetching places nearby location: ${JSON.stringify(location)}, and radius: ${radius}`,
-        );
+    this.logger.debug(
+      `Fetching places nearby location: ${JSON.stringify(location)}, and radius: ${radius}`,
+    );
     return this.client
       .placesNearby({
         params: {
