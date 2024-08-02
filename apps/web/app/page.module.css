@@ -32,7 +32,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 32px;
+  gap: 1rem;
   grid-row-start: 2;
   font-family: "Courier New", Courier, monospace;
   font-size: 2rem;
