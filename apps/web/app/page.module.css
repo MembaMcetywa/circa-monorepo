@@ -30,10 +30,21 @@
 .main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 32px;
   grid-row-start: 2;
   font-family: "Courier New", Courier, monospace;
   font-size: 2rem;
+}
+
+.main header {
+  color: #f1eadf;
+}
+.main p {
+  font-size: 1rem;
+  text-wrap: wrap;
+  font-family: "Poppins", sans-serif;
 }
 
 .main ol {
