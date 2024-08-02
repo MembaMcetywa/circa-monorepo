@@ -21,7 +21,8 @@
     "packages/*"
   ],
   "dependencies": {
-    "@googlemaps/google-maps-services-js": "^3.4.0",
-    "concurrently": "^8.2.2"
+    "@next/third-parties": "^14.2.5",
+    "concurrently": "^8.2.2",
+    "next": "^14.2.5"
   }
 }
