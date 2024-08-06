@@ -5,19 +5,28 @@ import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import { User, UserDocument } from '../schemas/user.schema';
 
+const JWT_SECRET = process.env.JWT_SECRET;
+const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
 @Injectable()
 export class AuthService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-  jwtSecret = process.env.JWT_SECRET;
-
-  async register(email: string, password: string): Promise<User> {
+  async register(
+    email: string,
+    password: string,
+  ): Promise<{ user: User; accessToken: string; refreshToken: string }> {
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new this.userModel({ email, password: hashedPassword });
-    return newUser.save();
+    await newUser.save();
+    const accessToken = this.generateAccessToken(newUser._id as string);
+    const refreshToken = this.generateRefreshToken(newUser._id as string);
+    return { user: newUser, accessToken, refreshToken };
   }
 
-  async login(email: string, password: string): Promise<{ token: string }> {
+  async login(
+    email: string,
+    password: string,
+  ): Promise<{ accessToken: string; refreshToken: string }> {
     const user = await this.userModel.findOne({ email });
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
@@ -28,10 +37,31 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const token = jwt.sign({ userId: user._id }, jwtSecret, {
-      expiresIn: '1h',
-    });
+    const accessToken = this.generateAccessToken(user._id as string);
+    const refreshToken = this.generateRefreshToken(user._id as string);
 
-    return { token };
+    return { accessToken, refreshToken };
+  }
+
+  generateAccessToken(userId: string): string {
+    return jwt.sign({ userId }, JWT_SECRET, { expiresIn: '15m' });
+  }
+
+  generateRefreshToken(userId: string): string {
+    return jwt.sign({ userId }, REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
+  }
+
+  async refreshAccessToken(
+    refreshToken: string,
+  ): Promise<{ accessToken: string }> {
+    try {
+      const payload = jwt.verify(refreshToken, REFRESH_TOKEN_SECRET) as {
+        userId: string;
+      };
+      const accessToken = this.generateAccessToken(payload.userId);
+      return { accessToken };
+    } catch (e) {
+      throw new UnauthorizedException('Invalid refresh token');
+    }
   }
 }
