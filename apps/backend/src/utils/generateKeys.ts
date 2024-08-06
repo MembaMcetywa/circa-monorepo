@@ -1,7 +1,9 @@
-const crypto = require('crypto');
+import { randomBytes } from 'crypto';
+//use require('crypto') when running file to create the local jwt secret and refreh token secret
+//Generate your own jwt secrets for local usage using this code
 
 const generateSecret = () => {
-  return crypto.randomBytes(32).toString('hex');
+  return randomBytes(32).toString('hex');
 };
 
 const jwtSecret = generateSecret();
