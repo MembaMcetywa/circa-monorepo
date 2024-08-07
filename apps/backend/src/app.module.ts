@@ -11,6 +11,7 @@ import { ConfigModule } from '@nestjs/config';
 import { DirectionsController } from './directions/directions.controller';
 import { DirectionsService } from './directions/directions.service';
 import { DistanceMatrixService } from './directions/distance-matrix.service';
+import { AuthModule } from './auth/auth.module';
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ dotenv.config();
       isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.MONGO_URI),
+    AuthModule,
   ],
   controllers: [AppController, PlacesController, DirectionsController],
   providers: [
