@@ -21,7 +21,6 @@ h2 {
 
 body {
     height: 98vh;
-    border: 2px solid red;
     display: flex;
     justify-content: center;
     align-items: center;
