@@ -23,7 +23,7 @@ const TextInput: React.FC<TextInputProps> = ({
   required = false,
 }) => {
   return (
-    <div className="text-input-container">
+    <div className={styles.container}>
       {label && <label htmlFor={name}>{label}</label>}
       <input
         type={type}
@@ -33,9 +33,9 @@ const TextInput: React.FC<TextInputProps> = ({
         name={name}
         id={name}
         required={required}
-        className={`text-input ${error ? "input-error" : ""}`}
+        className={`${styles.input} ${error ? styles["input-error"] : ""}`}
       />
-      {error && <span className="error-text">{error}</span>}
+      {error && <span className={styles["input-error"]}>{error}</span>}
     </div>
   );
 };
