@@ -1,12 +1,9 @@
 .container {
   width: 500px;
-  height: 500px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ccc;
   border-radius: 4px;
-  border: 2px solid red;
-   font-family: "Poppins", sans-serif;
+font-family: "Poppins", sans-serif;
 }
 
 h2 {
