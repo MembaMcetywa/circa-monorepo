@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import TextInput from "../components/TextInput";
-import useAuthStore from "../store/authStore";
+import useAuthStore from "../stores/authStore";
 import styles from "../auth.module.css";
 import Button from "../components/Button";
 import axios from "axios";
@@ -10,7 +10,7 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const login = useAuthStore((state) => state.login);
+  const login = useAuthStore((state: any) => state.login);
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
