@@ -5,6 +5,7 @@ import useAuthStore from "../stores/authStore";
 import styles from "../auth.module.css";
 import Button from "../components/Button";
 import axios from "axios";
+import Link from "next/link";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -59,6 +60,11 @@ const Login: React.FC = () => {
         {error && <p className={styles["error-text"]}>{error}</p>}
         <Button onClick={handleLogin}>Login</Button>
       </form>
+      <div className={styles['register-container']}>
+        <Link className={styles.register} href={"/register"}>
+          Register
+        </Link>
+      </div>
     </div>
   );
 };
