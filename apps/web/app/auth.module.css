@@ -3,14 +3,13 @@
   margin: 0 auto;
   padding: 20px;
   border-radius: 4px;
-font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 h2 {
   text-align: center;
   margin-bottom: 20px;
 }
-
 
 .error-text {
   color: red;
@@ -20,8 +19,20 @@ h2 {
 }
 
 body {
-    height: 98vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 98vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.register:hover, .register:active, .register:focus {
+  color: #575ec2;
 }
