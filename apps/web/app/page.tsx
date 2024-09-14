@@ -14,7 +14,7 @@ export default function Home() {
     if (isAuthenticated) {
       router.push("/home");
     } else {
-      console.error("User is not authenticated");
+     //TODO:ADD NICE TOAST MODAL HERE TO TELL THE USER THE WHAT HAPPENED
       router.push("/login");
     }
   };
