@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import TextInput from "../components/TextInput";
-import useAuthStore from "../store/authStore";
+import useAuthStore from "../stores/authStore";
 import styles from "../auth.module.css";
 import Button from "../components/Button";
 import axios from "axios";
