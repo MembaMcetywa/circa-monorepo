@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import Button from "./components/Button";
 import styles from "./page.module.css";
 import useAuthStore from "./stores/authStore"
