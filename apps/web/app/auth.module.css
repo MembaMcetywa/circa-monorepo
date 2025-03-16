@@ -14,12 +14,12 @@ h2 {
 .error-text {
   color: red;
   font-size: 12px;
-  margin-top: 4px;
+  margin: 6px 0;
   text-align: center;
 }
 
 body {
-  height: 98vh;
+  height: 98dvh;
   display: flex;
   justify-content: center;
   align-items: center;

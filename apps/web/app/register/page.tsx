@@ -26,7 +26,7 @@ const handleRegister = async (e: React.FormEvent) => {
         },
       }
     );
-    console.log(response.status)
+  
     if (response.status !== 201) {
       throw new Error("Registration failed");
     }
@@ -34,7 +34,12 @@ const handleRegister = async (e: React.FormEvent) => {
     const data = response.data;
     login(data.accessToken, data.refreshToken);
   } catch (err: any) {
-    setError(err.message);
+        const errorMessage =
+          (err.response && err.response.data && err.response.data.message) ||
+          err.message ||
+          "Registration failed";
+        setError(String(errorMessage));
+  
   }
 };
 
