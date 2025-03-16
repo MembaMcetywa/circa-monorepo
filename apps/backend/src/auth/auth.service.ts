@@ -1,4 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import * as bcrypt from 'bcryptjs';
@@ -15,6 +19,10 @@ export class AuthService {
     email: string,
     password: string,
   ): Promise<{ user: User; accessToken: string; refreshToken: string }> {
+    const existingUser = await this.userModel.findOne({ email });
+    if (existingUser) {
+      throw new ConflictException('Email already registered');
+    }
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new this.userModel({ email, password: hashedPassword });
     await newUser.save();
